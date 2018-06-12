@@ -1,10 +1,10 @@
-package tools;
+package utilities;
 
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class Utilities {
+public class Driver {
 	
 	public static WebDriver driver;
 	

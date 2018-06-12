@@ -1,0 +1,4 @@
+2018/06/12 12:23:08 The policy was issued correctly with the number:  DLGRC-0000969
+2018/06/12 12:25:29 The policy was issued correctly with the number:  DLGRC-0000970
+2018/06/12 12:25:36 The test passed
+2018/06/12 13:10:07 The test failed

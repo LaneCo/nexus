@@ -1,77 +1,79 @@
 
-package nexus;
+package tests;
 
 import org.testng.annotations.Test;
-import issuers_nexus.QualitasTA;
-import tools.Utilities;
+
+import layouts.QualitasTADMRT;
+import utilities.Driver;
+
 import org.testng.annotations.BeforeMethod;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.Keys;
 import org.testng.annotations.AfterTest;
 
-public class NewQualitasTA extends Utilities{
+public class NewQualitasTADMRT extends Driver{
 
-	tools.Config cfg = new tools.Config();
+	utilities.Config cfg = new utilities.Config();
 	
 	@BeforeMethod
-	public void OpenBrowser() {
-		
+	public  void OpenBrowser() {
+	   
 		String url = cfg.getProperty("url_nexus");	
 		driver.navigate().to(url);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
+
 	 }
 
-  @Test (priority = 2, description = "Issue Qualitas TA policy")
+  @Test (priority = 2, description = "Issue QualitasTA DM RT policy")
   	public void createPolicy() {
-
-	  Validar_login login = new Validar_login();
+	  NewLogin login = new NewLogin();
 	  String user = cfg.getProperty("user_nexus");
 	  String pass = cfg.getProperty("pass_nexus");
-	  login.login(user, pass);	
-	  QualitasTA newPolicy = new QualitasTA();
-	  System.out.println("Emitir poliza Qualitas TA");
+	  login.login(user, pass);
+	  QualitasTADMRT newPolicy = new QualitasTADMRT();
+	  System.out.println("Issue QualitasTA DM RT policy");
 	  driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 	  wait(2000);
 	  newPolicy.selectProduct().click();
 	  wait(10000);
 	  //Policy Data
-	  newPolicy.inputValue().sendKeys("15300");
+	  newPolicy.inputValue().sendKeys(Keys.chord(Keys.CONTROL, "a"), "");
+	  newPolicy.inputValue().sendKeys("6200");
 	  newPolicy.inputBrokerFee().sendKeys(Keys.chord(Keys.CONTROL, "a"), "");
-	  newPolicy.inputBrokerFee().sendKeys("40");
+	  newPolicy.inputBrokerFee().sendKeys("38");
 	  newPolicy.personalInformation().click();
 	  //Personal Information
-	  newPolicy.inputName().sendKeys("Alonso");
-	  newPolicy.inputLastName().sendKeys("Cervantes");
-	  newPolicy.inputAddres().sendKeys("Calle Girasoles 775, fracc. Principal");
-	  newPolicy.inputCity().sendKeys("Tijuana");
+	  newPolicy.inputName().sendKeys("Dayana");
+	  newPolicy.inputLastName().sendKeys("Flores Magon");
+	  newPolicy.inputAddres().sendKeys("Calle Industrial 448");
+	  newPolicy.inputCity().sendKeys("Tecate");
 	  newPolicy.dropdown_country().selectByVisibleText("Mexico");
-	  newPolicy.dropdown_state().selectByVisibleText("AGUASCALIENTES");
-	  newPolicy.inputZip().sendKeys("12345");
-	  newPolicy.inputPhone().sendKeys("6641234567");
-	  newPolicy.inputEmail().sendKeys("ccortez@arkusnexus.com");
+	  newPolicy.dropdown_state().selectByVisibleText("HIDALGO");
+	  newPolicy.inputZip().sendKeys("15300");
+	  newPolicy.inputPhone().sendKeys("4541652014");
 	  newPolicy.vehicleDescription().click();
-	  //vehicle description
-	  newPolicy.inputVehicleID().sendKeys("serUXAWWG5443");
-	  newPolicy.dropdown_year().selectByVisibleText("2012");
-	  newPolicy.inputMake().sendKeys("Nissan");
-	  newPolicy.inputModel().sendKeys("Sentra");
+	  //Vehicle description
+	  newPolicy.dropdown_year().selectByVisibleText("2011");
+	  newPolicy.select_make().selectByVisibleText("FORD");
+	  newPolicy.select_model().selectByVisibleText("EDGE");
 	  newPolicy.dropdown_veh_country().selectByVisibleText("Canada");
-	  newPolicy.dropdown_veh_state().selectByVisibleText("ALBERTA");
-	  newPolicy.inputPlates().sendKeys("AHT36T8");
+	  newPolicy.dropdown_veh_state().selectByVisibleText("YUKON");
+	  newPolicy.inputPlates().sendKeys("5Z1R289");
+	  newPolicy.inputVehicleID().sendKeys("teswxzriW112234");
 	  //Payment
 	  newPolicy.inputPayment().click();
 	  newPolicy.dropdown_payment().selectByVisibleText("Cash");
-	  //make the purchase
+	  //Make the purchase
 	  newPolicy.purchase().click();
-	  //confirm the purchase
+	  //Confirm the purchase
 	  newPolicy.confirmation();
 	  wait(3000);
 	  newPolicy.closePolicy().click();
 	  wait(2000);
 	  String close = Keys.chord(Keys.ALT,Keys.F4);
 	  newPolicy.closePolicy().sendKeys(close);
-	  //Obtain the policy number issued
+	  //Get the policy number issued
 	  String Text = newPolicy.policy().getText();
 	  System.out.println(Text);
 	  String[] parts = Text.split(":");

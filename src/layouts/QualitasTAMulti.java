@@ -1,4 +1,4 @@
-package issuers_nexus;
+package layouts;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 
-public class QualitasTAMulti extends tools.Utilities{
+public class QualitasTAMulti extends utilities.Driver{
 
 	public WebElement selectProduct() {
 		//Select the frame where the button is located

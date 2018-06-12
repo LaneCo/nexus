@@ -1,16 +1,18 @@
 
-package nexus;
+package tests;
 
 import org.testng.annotations.Test;
-import issuers_nexus.QualitasTransfer;
-import tools.Utilities;
+
+import layouts.QualitasTransfer;
+import utilities.Driver;
+
 import org.testng.annotations.BeforeMethod;
 import java.util.concurrent.TimeUnit;import org.openqa.selenium.Keys;
 import org.testng.annotations.AfterTest;
 
-public class NewQualitasTransfer extends Utilities{
+public class NewQualitasTransfer extends Driver{
 
-	tools.Config cfg = new tools.Config();
+	utilities.Config cfg = new utilities.Config();
 	
 	@BeforeMethod
 	public void OpenBrowser() {
@@ -23,7 +25,7 @@ public class NewQualitasTransfer extends Utilities{
 
   @Test (priority = 2, description = "Emitir poliza Qualitas Transfer")
   	public void createPolicy() {
-	  Validar_login login = new Validar_login();
+	  NewLogin login = new NewLogin();
 	  String user = cfg.getProperty("user_nexus");
 	  String pass = cfg.getProperty("pass_nexus");
 	  login.login(user, pass);

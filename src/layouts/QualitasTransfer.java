@@ -1,4 +1,4 @@
-package issuers_nexus;
+package layouts;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -6,39 +6,77 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 
-public class QualitasRC extends tools.Utilities{
+public class QualitasTransfer extends utilities.Driver{
 
 	public WebElement selectProduct() {
-		
-		driver.switchTo().frame("menu_inbox"); 
-		return driver.findElement(By.xpath(".//*[@id='tbl_imgLinks']/tbody/tr[1]/td/a")); 
+		//Select the frame where the button is located
+		driver.switchTo().frame("menu_inbox");
+		return driver.findElement(By.linkText("Qualitas Transfer"));
 		
 	  }
-
+	
+	public Select selectPackage(){
+		
+		return new Select(driver.findElement(By.id("ddl_plan")));
+		
+	  }
+	public Select selectType(){
+		
+		return new Select(driver.findElement(By.id("ddl_mc")));
+		
+	  }
 	public WebElement inputBrokerFee() {
-
+		 
 		 return driver.findElement(By.id("txt_brokerFee"));
 		
 	  }
-	
-	public Select select_days(){
-		
-		return new Select(driver.findElement(By.id("ddl_days")));
-		
-	  }
-	
-	//Personal information tab
-	public WebElement insuredData() {
+	//Personal Information tab
+	public WebElement personalInformation() {
 		 
-		 return driver.findElement(By.xpath(".//*[@id='Form1']/table/tbody/tr[2]/td/table/tbody/tr[4]/td/table/tbody/tr[1]/td/div[1]/ul/li[2]/a"));
+		return driver.findElement(By.xpath(".//*[@id='__tbl_form']/tbody/tr[3]/td/table/tbody/tr/td/div[1]/ul/li[2]/a")); 
 		
 	  }
-	public WebElement inputInsured() {
+	public WebElement select_personF(){
+		
+		return driver.findElement(By.id("rbl_personType_0"));
+		
+	  }
+	public WebElement select_personM(){
+		
+		return driver.findElement(By.id("rbl_personType_1"));
+		
+	  }
+	public WebElement inputName() {
 		 
 		 return driver.findElement(By.id("txt_Nombre"));
 		
 	  }
-
+	public WebElement inputLastName() {
+		 
+		 return driver.findElement(By.id("txt_Apellidos"));
+		
+	  }
+	public WebElement calendar(){
+		
+		return driver.findElement(By.id("StartIcon4"));
+		
+	  }
+	public Select year_birthdate(){
+		
+		return new Select(driver.findElement(By.xpath(".//*[@id='calYears']")));
+		
+	  }
+	public Select month_birthdate(){
+		
+		return new Select(driver.findElement(By.id("calMonths")));
+		
+	  }
+	public WebElement day_birthdate(){
+		
+		return driver.findElement(By.xpath(".//*[@id='MonthTable']/tbody/tr[6]/td[1]"));
+		
+	  }
+	
 	public WebElement inputAddres() {
 		 
 		 return driver.findElement(By.id("txt_Domicilio"));
@@ -59,6 +97,7 @@ public class QualitasRC extends tools.Utilities{
 		return new Select(driver.findElement(By.id("ddl_Estado")));
 		
 	  }
+	
 	public WebElement inputZip() {
 		 
 		 return driver.findElement(By.id("txt_CP"));
@@ -69,30 +108,36 @@ public class QualitasRC extends tools.Utilities{
 		 return driver.findElement(By.id("txt_Tel"));
 		
 	  }
-	public WebElement inputRfc() {
+	public WebElement inputEmail() {
 		 
-		 return driver.findElement(By.id("txt_rfc"));
+		 return driver.findElement(By.id("txt_email"));
 		
 	  }
 	//Vehicle description tab
 	public WebElement vehicleDescription() {
-		 
-		return driver.findElement(By.linkText("Vehicle Description"));
+		
+		 return driver.findElement(By.linkText("Vehicle Description"));
 		
 	  }
+
 	public Select dropdown_year(){
 		
 		return new Select(driver.findElement(By.id("ddl_VehAnio")));
 		
 	  }
-	public Select select_make(){
+	public WebElement make(){
 		
-		return new Select(driver.findElement(By.id("ddl_VehMarca")));
+		return driver.findElement(By.id("txt_VehMarca"));
 		
 	  }
-	public Select select_model(){
+	public WebElement model(){
 		
-		return new Select(driver.findElement(By.id("ddl_VehModelo")));
+		return driver.findElement(By.id("txt_VehModelo"));
+		
+	  }
+	public Select dropdown_veh_country(){
+		
+		return new Select(driver.findElement(By.id("ddl_VehCountry")));
 		
 	  }
 	public Select dropdown_veh_state(){
@@ -100,11 +145,13 @@ public class QualitasRC extends tools.Utilities{
 		return new Select(driver.findElement(By.id("ddl_VehState")));
 		
 	  }
+
 	public WebElement inputPlates() {
 		 
 		 return driver.findElement(By.id("txt_VehPlacas"));
 		
 	  }
+	
 	public WebElement inputVehicleID() {
 		 
 		 return driver.findElement(By.id("txt_VehSerie"));
@@ -113,7 +160,7 @@ public class QualitasRC extends tools.Utilities{
 	//Payment tab
 	public WebElement inputPayment() {
 		 
-		return driver.findElement(By.linkText("Payment"));
+		 return driver.findElement(By.linkText("Payment"));
 		
 	  }
 	public Select dropdown_payment(){
@@ -121,6 +168,7 @@ public class QualitasRC extends tools.Utilities{
 		return new Select(driver.findElement(By.id("ddl_cc_owner")));
 		
 	  }
+
 	//Complete the purchase
 	public WebElement purchase() {
 		 
@@ -143,7 +191,6 @@ public class QualitasRC extends tools.Utilities{
 		
 		return driver.findElement(By.id("Label_succesful"));
 	}
-	
 	
 
 }

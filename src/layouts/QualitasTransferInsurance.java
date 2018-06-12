@@ -1,4 +1,4 @@
-package issuers_nexus;
+package layouts;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -6,25 +6,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 
-
-public class QualitasMandatory extends tools.Utilities{
+public class QualitasTransferInsurance extends utilities.Driver{
 
 	public WebElement selectProduct() {
 		//Select the frame where the button is located
 		driver.switchTo().frame("menu_inbox");
-		return driver.findElement(By.linkText("Mandatory Baja California Liability Only"));
-	  }
-	
-	public Select select_veh_type(){
-		
-		return new Select(driver.findElement(By.id("ddl_mc")));
+		return driver.findElement(By.linkText("Qualitas Transfer Insurance"));
 		
 	  }
 	
 	//Personal information tab
 	public WebElement personalInformation() {
 		 
-		 return driver.findElement(By.xpath(".//*[@id='__tbl_form']/tbody/tr[3]/td/table/tbody/tr/td/div[1]/ul/li[2]/a"));
+		return driver.findElement(By.xpath(".//*[@id='__tbl_form']/tbody/tr[3]/td/table/tbody/tr/td/div[1]/ul/li[2]/a")); 
 		
 	  }
 	public WebElement inputName() {
@@ -37,6 +31,27 @@ public class QualitasMandatory extends tools.Utilities{
 		 return driver.findElement(By.id("txt_Apellidos"));
 		
 	  }
+	public WebElement calendar(){
+		
+		return driver.findElement(By.id("StartIcon4"));
+		
+	  }
+	public Select year_birthdate(){
+		
+		return new Select(driver.findElement(By.xpath(".//*[@id='calYears']")));
+		
+	  }
+	public Select month_birthdate(){
+		
+		return new Select(driver.findElement(By.id("calMonths")));
+		
+	  }
+	public WebElement day_birthdate(){
+		
+		return driver.findElement(By.xpath(".//*[@id='MonthTable']/tbody/tr[6]/td[1]"));
+		
+	  }
+	
 	public WebElement inputAddres() {
 		 
 		 return driver.findElement(By.id("txt_Domicilio"));
@@ -68,6 +83,11 @@ public class QualitasMandatory extends tools.Utilities{
 		 return driver.findElement(By.id("txt_Tel"));
 		
 	  }
+	public WebElement inputEmail() {
+		 
+		 return driver.findElement(By.id("txt_email"));
+		
+	  }
 	//Vehicle description tab
 	public WebElement vehicleDescription() {
 		
@@ -80,13 +100,12 @@ public class QualitasMandatory extends tools.Utilities{
 		return new Select(driver.findElement(By.id("ddl_VehAnio")));
 		
 	  }
-
-	public Select select_make(){
+	public Select make(){
 		
 		return new Select(driver.findElement(By.id("ddl_VehMarca")));
 		
 	  }
-	public Select select_model(){
+	public Select model(){
 		
 		return new Select(driver.findElement(By.id("ddl_VehModelo")));
 		
@@ -147,6 +166,4 @@ public class QualitasMandatory extends tools.Utilities{
 		
 		return driver.findElement(By.id("Label_succesful"));
 	}
-	
-
 }
