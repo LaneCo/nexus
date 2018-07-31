@@ -1,0 +1,5 @@
+2018/07/31 12:52:46 No se encontro en el reporte de polizas vendidas, la poliza: QRC-0002430
+2018/07/31 12:56:27 No se encontro en el reporte de polizas vendidas, la poliza: QRC-0002430
+2018/07/31 12:59:17 La poliza: QRC-0002430 se encontro correctamente en el reporte de polizas vendidas
+2018/07/31 13:06:00 La poliza: QRC-0002430 se encontro correctamente en el reporte de polizas vendidas
+2018/07/31 13:06:03 The test passed
