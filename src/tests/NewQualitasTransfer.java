@@ -2,32 +2,37 @@
 package tests;
 
 import org.testng.annotations.Test;
-
 import layouts.QualitasTransfer;
 import utilities.Driver;
-
+import utilities.LogQualitasTransfer;
 import org.testng.annotations.BeforeMethod;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;import org.openqa.selenium.Keys;
-import org.testng.annotations.AfterTest;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 
 public class NewQualitasTransfer extends Driver{
 
 	utilities.Config cfg = new utilities.Config();
+	ITestResult result;
+	NewLogin login;
+	String user;
+	String pass;
 	
 	@BeforeMethod
 	public void OpenBrowser() {
 	   
-		String url = cfg.getProperty("url_nexus"); 
+		String url = cfg.getProperty("url_nexus");
+		user = cfg.getProperty("user_nexus");
+		pass = cfg.getProperty("pass_nexus");
 		driver.navigate().to(url);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		login = new NewLogin();
 
 	 }
 
   @Test (priority = 2, description = "Emitir poliza Qualitas Transfer")
-  	public void createPolicy() {
-	  NewLogin login = new NewLogin();
-	  String user = cfg.getProperty("user_nexus");
-	  String pass = cfg.getProperty("pass_nexus");
+  	public void createPolicy() throws IOException {
 	  login.login(user, pass);
 	  
 	  String person_type = "Moral"; //Type of person
@@ -35,7 +40,7 @@ public class NewQualitasTransfer extends Driver{
 	  System.out.println("Emitir poliza Qualitas Transfer");
 	  driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 	  wait(2000);
-	  newPolicy.selectProduct().click();
+	  newPolicy.getProduct().click();
 	  wait(1000);
 	  //Policy Data
 			  /*Select Plan
@@ -43,53 +48,53 @@ public class NewQualitasTransfer extends Driver{
 			   *Annual Package 2
 			   *Annual Package 3
 			   *Annual Package 4*/
-	  newPolicy.selectPackage().selectByVisibleText("Annual Package 4");
-	  newPolicy.inputBrokerFee().sendKeys(Keys.chord(Keys.CONTROL, "a"), "");
-	  newPolicy.inputBrokerFee().sendKeys("20");
-	  newPolicy.selectType().selectByVisibleText("Tractocamion"); //Tractocamion , Rabon , Ligero (Panel)
+	  newPolicy.getPackages().selectByVisibleText("Annual Package 4");
+	  newPolicy.getBrokeerFee().sendKeys(Keys.chord(Keys.CONTROL, "a"), "");
+	  newPolicy.getBrokeerFee().sendKeys("20");
+	  newPolicy.getVehicleType().selectByVisibleText("Tractocamion"); //Tractocamion , Rabon , Ligero (Panel)
 	  	
-	  newPolicy.personalInformation().click();
+	  newPolicy.getPersonalInformationTab().click();
 	  //Personal Information
 	  if ( (person_type).equals("Moral") )
 	  {
-		  newPolicy.select_personM().click();
-		  newPolicy.inputName().sendKeys("Coca Cola SA de CV");
-		  newPolicy.inputAddres().sendKeys("Calle primera 36-A col. Insurgentes");
-		  newPolicy.inputCity().sendKeys("DF");
-		  newPolicy.dropdown_country().selectByVisibleText("Mexico");
-		  newPolicy.dropdown_state().selectByVisibleText("DISTRITO FEDERAL");
-		  newPolicy.inputZip().sendKeys("22800");
+		  newPolicy.getCompany().click();
+		  newPolicy.getName().sendKeys("Coca Cola SA de CV");
+		  newPolicy.getAddress().sendKeys("Calle primera 36-A col. Insurgentes");
+		  newPolicy.getCity().sendKeys("DF");
+		  newPolicy.getCountry().selectByVisibleText("Mexico");
+		  newPolicy.getState().selectByVisibleText("DISTRITO FEDERAL");
+		  newPolicy.getZip().sendKeys("22800");
 	  }else{
-		  newPolicy.inputName().sendKeys("Minerva");
-		  newPolicy.inputLastName().sendKeys("Estrada Camarena");
-		  newPolicy.calendar().click(); //select Calendar
-		  newPolicy.year_birthdate().selectByVisibleText("1980"); //birth year
-		  newPolicy.month_birthdate().selectByVisibleText("March"); //birth month
-		  newPolicy.day_birthdate().click(); //birth day
-		  newPolicy.inputAddres().sendKeys("Calle tercera 338");
-		  newPolicy.inputCity().sendKeys("Sonoita");
-		  newPolicy.dropdown_country().selectByVisibleText("Mexico");
-		  newPolicy.dropdown_state().selectByVisibleText("SONORA");
-		  newPolicy.inputZip().sendKeys("12345");
-		  newPolicy.inputPhone().sendKeys("6861245");
+		  newPolicy.getName().sendKeys("Minerva");
+		  newPolicy.getLastName().sendKeys("Estrada Camarena");
+		  newPolicy.getCalendar().click(); //select Calendar
+		  newPolicy.getYearBirthdate().selectByVisibleText("1980"); //birth year
+		  newPolicy.getMonthBirthdate().selectByVisibleText("March"); //birth month
+		  newPolicy.getDayBirthdate().click(); //birth day
+		  newPolicy.getAddress().sendKeys("Calle tercera 338");
+		  newPolicy.getCity().sendKeys("Sonoita");
+		  newPolicy.getCountry().selectByVisibleText("Mexico");
+		  newPolicy.getState().selectByVisibleText("SONORA");
+		  newPolicy.getZip().sendKeys("12345");
+		  newPolicy.getPhone().sendKeys("6861245");
 	  }
 
-	  newPolicy.vehicleDescription().click();
+	  newPolicy.getVehicleDescriptionTab().click();
 	  //Vehicle description
-	  newPolicy.dropdown_year().selectByVisibleText("2001");
-	  newPolicy.make().sendKeys("Ford"); 
-	  newPolicy.model().sendKeys("Focus");
-	  newPolicy.dropdown_veh_country().selectByVisibleText("United States of America");
-	  newPolicy.dropdown_veh_state().selectByVisibleText("CONNECTICUT");
-	  newPolicy.inputPlates().sendKeys("5ZR1254");
-	  newPolicy.inputVehicleID().sendKeys("testABWWHYC543");
+	  newPolicy.getVehicleYear().selectByVisibleText("2001");
+	  newPolicy.getMake().sendKeys("Ford"); 
+	  newPolicy.getModel().sendKeys("Focus");
+	  newPolicy.getVehicleCountry().selectByVisibleText("United States of America");
+	  newPolicy.getVehicleState().selectByVisibleText("CONNECTICUT");
+	  newPolicy.getPlates().sendKeys("5ZR1254");
+	  newPolicy.getVehicleId().sendKeys("TESTSERIEAUT004");
 	  
 	  //Payment
 	  wait(2000);
-	  newPolicy.inputPayment().click();
-	  newPolicy.dropdown_payment().selectByVisibleText("Cash");
+	  newPolicy.getPaymentTab().click();
+	  newPolicy.getPayment().selectByVisibleText("Cash");
 	  //Make the purchase
-	  newPolicy.purchase().click();
+	  newPolicy.getPurchase().click();
 	  //Confirm the purchase
 	  newPolicy.confirmation();
 	  wait(3000);
@@ -98,21 +103,44 @@ public class NewQualitasTransfer extends Driver{
 	  String close = Keys.chord(Keys.ALT,Keys.F4);
 	  newPolicy.closePolicy().sendKeys(close);
 	  //Get the policy number issued
-	  String Text = newPolicy.policy().getText();
+	  String Text = newPolicy.getPolicy().getText();
 	  System.out.println(Text);
 	  String[] parts = Text.split(":");
 	  System.out.println("The policy was issued correctly with the number: "+parts[1]);
+	  String line = "The policy was issued correctly with the number: "+parts[1];
+	  LogQualitasTransfer.write(line);
 	  wait(1500);
 	  login.Logout();
   }
   
-  	@AfterTest
-  	public static void closeDriver(){
-  
-  		System.out.println("@AfterTest closing driver");
-  		wait(3000);
-  		System.out.println("close");
-  		driver.quit();
-  	}
+  @AfterMethod
+  public void afterMethod(ITestResult result)
+  {
+	  System.out.println("@AfterTest closing driver");
+	  wait(3000);
+	  driver.quit();
+      try
+      {
+      if(result.getStatus() == ITestResult.SUCCESS)
+      {
+    	  LogQualitasTransfer.write("The test passed");
+          System.out.println("passed **********");
+      }
+      else if(result.getStatus() == ITestResult.FAILURE)
+      {
+    	  LogQualitasTransfer.write("The test failed");
+          System.out.println("Failed ***********");
+      }
+
+      else if(result.getStatus() == ITestResult.SKIP )
+      {
+          System.out.println("Skiped***********");
+      }
+      }
+      catch(Exception e)
+      {
+    	  e.printStackTrace(); 
+      }
+  }
 
 }

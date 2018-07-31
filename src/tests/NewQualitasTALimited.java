@@ -62,7 +62,7 @@ public class NewQualitasTALimited extends Driver {
 	  newPolicy.getEmail().sendKeys("ccortez@arkusnexus.com");
 	  newPolicy.getVehicleDescriptionTab().click();
 	  //vehicle description
-	  newPolicy.getVehicleId().sendKeys("ABcrUXAWWG5443");
+	  newPolicy.getVehicleId().sendKeys("AwawqBcrUXAWWG5443");
 	  newPolicy.getYear().selectByVisibleText("2012");
 	  newPolicy.getMake().sendKeys("Nissan");
 	  newPolicy.getModel().sendKeys("Sentra");

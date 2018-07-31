@@ -1,0 +1,2 @@
+2018/07/27 12:58:11 The policy was issued correctly with the number:  QTAM-0002077
+2018/07/27 12:58:19 The test passed

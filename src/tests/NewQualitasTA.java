@@ -60,7 +60,7 @@ public class NewQualitasTA extends Driver{
 	  newPolicy.getEmail().sendKeys("ccortez@arkusnexus.com");
 	  newPolicy.getVehicleDescriptionTab().click();
 	  //vehicle description
-	  newPolicy.getVehicleId().sendKeys("ABrUXAWWG5443");
+	  newPolicy.getVehicleId().sendKeys("Seriee02AL");
 	  newPolicy.getYear().selectByVisibleText("2012");
 	  newPolicy.getMake().sendKeys("Nissan");
 	  newPolicy.getModel().sendKeys("Sentra");

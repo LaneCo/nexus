@@ -26,3 +26,14 @@
 2018/06/12 10:09:36 The test failed
 2018/06/12 10:15:00 The policy was issued correctly with the number:  GRCQRC-0002419
 2018/06/12 10:15:08 The test passed
+2018/07/04 17:26:41 The policy was issued correctly with the number:  GRCQRC-0002420
+2018/07/04 17:26:49 The test passed
+2018/07/05 16:49:37 The test failed
+2018/07/05 16:51:14 The test failed
+2018/07/05 16:52:50 The test failed
+2018/07/05 16:54:46 The test failed
+2018/07/05 16:56:07 The test failed
+2018/07/05 16:58:42 The test failed
+2018/07/05 16:59:31 The policy was issued correctly with the number:  GRCQRC-0002421
+2018/07/05 16:59:39 The test passed
+2018/07/09 12:38:43 The test failed

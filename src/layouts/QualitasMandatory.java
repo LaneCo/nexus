@@ -7,140 +7,144 @@ import org.openqa.selenium.support.ui.Select;
 
 public class QualitasMandatory extends utilities.Driver{
 	
-	WebElement product;
-	Select vehicleType;
-	WebElement personalInformation;
-	WebElement name;
-	WebElement lastName;
-	WebElement address;
-	WebElement city;
-	Select country;
-	Select state;
-	WebElement zip;
-	WebElement phone;
-	WebElement vehicleDescriptionType;
-	Select year;
-	Select make;
-	Select model;
-	Select vehicleCountry;
-	Select vehicleState;
-	WebElement plates;
-	WebElement vehicleId;
-	WebElement paymentTab;
-	Select payment;
-	WebElement purchase;
-	WebElement closePolicy;
-	WebElement policy;
+	private String product;
+	private String vehicleType;
+	private String personalInformation;
+	private String name;
+	private String lastName;
+	private String address;
+	private String city;
+	private String country;
+	private String state;
+	private String zip;
+	private String phone;
+	private String vehicleDescriptionType;
+	private String year;
+	private String make;
+	private String model;
+	private String vehicleCountry;
+	private String vehicleState;
+	private String plates;
+	private String vehicleId;
+	private String paymentTab;
+	private String payment;
+	private String purchase;
+	private String policy;
+	
+	public QualitasMandatory(){
+		
+		product = "Mandatory Baja California Liability Only";
+		vehicleType = "ddl_mc";
+		personalInformation = ".//*[@id='__tbl_form']/tbody/tr[3]/td/table/tbody/tr/td/div[1]/ul/li[2]/a";
+		name = "txt_Nombre";
+		lastName = "txt_Apellidos";
+		address = "txt_Domicilio";
+		city = "txt_Ciudad";
+		country = "ddl_Pais";
+		state = "ddl_Estado";
+		zip = "txt_CP";
+		phone = "txt_Tel";
+		vehicleDescriptionType = "Vehicle Description";
+		year = "ddl_VehAnio";
+		make = "ddl_VehMarca";
+		model = "ddl_VehModelo";
+		vehicleCountry = "ddl_VehCountry";
+		vehicleState = "ddl_VehState";
+		plates = "txt_VehPlacas";
+		vehicleId = "txt_VehSerie";
+		paymentTab = "Payment";
+		payment = "ddl_cc_owner";
+		purchase = "btnOK";
+		policy = "Label_succesful";
+	}
 	
 	public WebElement getProduct() {
 		driver.switchTo().frame("menu_inbox");
-		product = driver.findElement(By.linkText("Mandatory Baja California Liability Only"));
-		return product;
+		return driver.findElement(By.linkText(product));
 	}
 
 	public Select getVehicleType() {
-		vehicleType = new Select(driver.findElement(By.id("ddl_mc")));
-		return vehicleType;
+		return new Select(driver.findElement(By.id(vehicleType)));
 	}
 
 	public WebElement getPersonalInformation() {
-		personalInformation = driver.findElement(By.xpath(".//*[@id='__tbl_form']/tbody/tr[3]/td/table/tbody/tr/td/div[1]/ul/li[2]/a"));
-		return personalInformation;
+		return driver.findElement(By.xpath(personalInformation));
 	}
 
 	public WebElement getName() {
-		name = driver.findElement(By.id("txt_Nombre"));
-		return name;
+		return driver.findElement(By.id(name));
 	}
 
 	public WebElement getLastName() {
-		lastName = driver.findElement(By.id("txt_Apellidos"));
-		return lastName;
+		return driver.findElement(By.id(lastName));
 	}
 
 	public WebElement getAddress() {
-		address = driver.findElement(By.id("txt_Domicilio"));
-		return address;
+		return driver.findElement(By.id(address));
 	}
 
 	public WebElement getCity() {
-		city = driver.findElement(By.id("txt_Ciudad"));
-		return city;
+		return driver.findElement(By.id(city));
 	}
 
 	public Select getCountry() {
-		country = new Select(driver.findElement(By.id("ddl_Pais")));
-		return country;
+		return new Select(driver.findElement(By.id(country)));
 	}
 
 	public Select getState() {
-		state = new Select(driver.findElement(By.id("ddl_Estado")));
-		return state;
+		return new Select(driver.findElement(By.id(state)));
 	}
 
 	public WebElement getZip() {
-		zip = driver.findElement(By.id("txt_CP"));
-		return zip;
+		return driver.findElement(By.id(zip));
 	}
 
 	public WebElement getPhone() {
-		phone = driver.findElement(By.id("txt_Tel"));
-		return phone;
+		return driver.findElement(By.id(phone));
 	}
 	//Vehicle description tab
 	public WebElement getVehicleDescriptionType() {
-		vehicleDescriptionType = driver.findElement(By.linkText("Vehicle Description"));
-		return vehicleDescriptionType;
+		return driver.findElement(By.linkText(vehicleDescriptionType));
 	}
 
 	public Select getYear() {
-		year = new Select(driver.findElement(By.id("ddl_VehAnio")));
-		return year;
+		return new Select(driver.findElement(By.id(year)));
 	}
 
 	public Select getMake() {
-		make = new Select(driver.findElement(By.id("ddl_VehMarca")));
-		return make;
+		return new Select(driver.findElement(By.id(make)));
 	}
 
 	public Select getModel() {
-		model = new Select(driver.findElement(By.id("ddl_VehModelo")));
-		return model;
+		return new Select(driver.findElement(By.id(model)));
 	}
 
 	public Select getVehicleCountry() {
-		vehicleCountry = new Select(driver.findElement(By.id("ddl_VehCountry")));
-		return vehicleCountry;
+		return new Select(driver.findElement(By.id(vehicleCountry)));
 	}
 
 	public Select getVehicleState() {
-		vehicleState = new Select(driver.findElement(By.id("ddl_VehState")));
-		return vehicleState;
+		return new Select(driver.findElement(By.id(vehicleState)));
 	}
 
 	public WebElement getPlates() {
-		plates = driver.findElement(By.id("txt_VehPlacas"));
-		return plates;
+		return driver.findElement(By.id(plates));
 	}
 
 	public WebElement getVehicleId() {
-		vehicleId = driver.findElement(By.id("txt_VehSerie"));
-		return vehicleId;
+		return driver.findElement(By.id(vehicleId));
 	}
 	//Payment tab
 	public WebElement getPaymentTab() {
-		paymentTab = driver.findElement(By.linkText("Payment"));
-		return paymentTab;
+		return driver.findElement(By.linkText(paymentTab));
 	}
 
 	public Select getPayment() {
-		payment = new Select(driver.findElement(By.id("ddl_cc_owner")));
-		return payment;
+		return new Select(driver.findElement(By.id(payment)));
 	}
 
 	public WebElement getPurchase() {
-		purchase = driver.findElement(By.id("btnOK"));
-		return purchase;
+		return driver.findElement(By.id(purchase));
 	}
 
 	public void confirmation() {
@@ -150,12 +154,10 @@ public class QualitasMandatory extends utilities.Driver{
 	}
 
 	public WebElement getClosePolicy() {
-		closePolicy = driver.switchTo().activeElement();
-		return closePolicy;
+		return driver.switchTo().activeElement();
 	}
 
 	public WebElement getPolicy() {
-		policy = driver.findElement(By.id("Label_succesful"));
-		return policy;
+		 return driver.findElement(By.id(policy));
 	}
 }

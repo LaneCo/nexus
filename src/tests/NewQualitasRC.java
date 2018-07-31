@@ -28,7 +28,10 @@ public class NewQualitasRC extends Driver{
 	 //System.out.println("user: "+user);
 	 pass = cfg.getProperty("pass_nexus");
 	 //System.out.println("password: "+pass);
+	 driver.manage().deleteAllCookies();
+	 
 	 driver.navigate().to(url);
+	 
 	 // Maximize the browser
 	 driver.manage().window().maximize();	
 	 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -59,7 +62,7 @@ public class NewQualitasRC extends Driver{
 	  newPolicy.getInsured().sendKeys("Diana Solorio Texas");
 	  newPolicy.getAddress().sendKeys("Calle 20 Noviembre 338");
 	  newPolicy.getCity().sendKeys("Monterrey");
-	  newPolicy.getCountry().selectByVisibleText("Mexico");
+	  //newPolicy.getCountry().selectByVisibleText("Mexico");
 	  newPolicy.getState().selectByVisibleText("NUEVO LEON");
 	  newPolicy.getZip().sendKeys("33600");
 	  newPolicy.getPhone().sendKeys("3231569814");
@@ -72,7 +75,7 @@ public class NewQualitasRC extends Driver{
 	  newPolicy.getModel().selectByVisibleText("AVEO");
 	  newPolicy.getStateVehicle().selectByVisibleText("COLIMA");
 	  newPolicy.getPlates().sendKeys("7NTB606");
-	  newPolicy.getVehicleId().sendKeys("testSW2rsWWs2123");
+	  newPolicy.getVehicleId().sendKeys("Seriee02AL");
 	  //Payment
 	  newPolicy.getPaymentTab().click();
 	  newPolicy.getPayment().selectByVisibleText("Client's Credit Card");

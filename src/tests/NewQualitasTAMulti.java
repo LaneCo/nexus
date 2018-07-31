@@ -2,13 +2,14 @@
 package tests;
 
 import org.testng.annotations.Test;
-
 import layouts.QualitasTAMulti;
 import utilities.Driver;
-
+import utilities.LogQualitasTaMulti;
 import org.testng.annotations.BeforeMethod;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;import org.openqa.selenium.Keys;
-import org.testng.annotations.AfterTest;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 
 public class NewQualitasTAMulti extends Driver{
 
@@ -25,18 +26,18 @@ public class NewQualitasTAMulti extends Driver{
 	 }
 
   @Test (priority = 2, description = "Issue QualitasTA Multi policy")
-  	public void createPolicy() {
+  	public void createPolicy() throws IOException {
 	  NewLogin login = new NewLogin();
 	  String user = cfg.getProperty("user_nexus");
 	  String pass = cfg.getProperty("pass_nexus");
 	  login.login(user, pass);
 	  
-	  String veh_num = "1"; //enter the number of vehicles
+	  String veh_num = "2"; //enter the number of vehicles
 	  QualitasTAMulti newPolicy = new QualitasTAMulti();
 	  System.out.println("Issue QualitasTA Multi policy");
 	  driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 	  wait(2000);
-	  newPolicy.selectProduct().click();
+	  newPolicy.getProduct().click();
 	  wait(1000);
 	  //Policy Data
 			  /*Select Plan
@@ -49,95 +50,94 @@ public class NewQualitasTAMulti extends Driver{
 			   *10 Days Daily
 			   *15 Days Daily
 			   *30 Days Daily*/
-	  newPolicy.selectPackage().selectByVisibleText("50 Days Annual");
+	  newPolicy.getPackages().selectByVisibleText("50 Days Annual");
 	  if ( (veh_num).equals("3") )
 	  {
-		  newPolicy.selectVehicles().selectByVisibleText(veh_num);
+		  newPolicy.getVehicles().selectByVisibleText(veh_num);
 	  }
 			  /*Select liability
 			   *$150,000.00
 			   * $300,000.00*/
-	  newPolicy.selectLiability().selectByVisibleText("$300,000.00");
-	  newPolicy.personalInformation().click();
+	  newPolicy.getLiability().selectByVisibleText("$300,000.00");
+	  newPolicy.getPersonalInformation().click();
 	  //Personal Information
-	  newPolicy.inputName().sendKeys("Ruth");
-	  newPolicy.inputLastName().sendKeys("Gonzalez Cabrera");
-	  newPolicy.inputAddres().sendKeys("Calle ruiz cortines 987");
-	  newPolicy.inputCity().sendKeys("San Luis");
-	  newPolicy.dropdown_country().selectByVisibleText("Mexico");
-	  newPolicy.dropdown_state().selectByVisibleText("SONORA");
-	  newPolicy.inputZip().sendKeys("11200");
-	  newPolicy.inputPhone().sendKeys("6861245");
-	  newPolicy.vehicleDescription().click();
+	  newPolicy.getName().sendKeys("Ruth");
+	  newPolicy.getLastName().sendKeys("Gonzalez Cabrera");
+	  newPolicy.getAddress().sendKeys("Calle ruiz cortines 987");
+	  newPolicy.getCity().sendKeys("San Luis");
+	  newPolicy.getCountry().selectByVisibleText("Mexico");
+	  newPolicy.getState().selectByVisibleText("SONORA");
+	  newPolicy.getZip().sendKeys("11200");
+	  newPolicy.getPhone().sendKeys("6861245");
+	  newPolicy.getVehicleDescription().click();
 	  //Vehicle description
 	  switch(veh_num){
 	  	case "1": 
-	  			newPolicy.dropdown_type().selectByVisibleText("Auto/SUV/Pick Up/Cargo & Passengers Van/Light Truck up to 2.5 ton of capacity");
-	  			newPolicy.dropdown_year().selectByVisibleText("2011");
-	  			newPolicy.select_make().selectByVisibleText("CHRYSLER");
-	  			newPolicy.select_model().selectByVisibleText("300");
-	  			newPolicy.dropdown_veh_country().selectByVisibleText("United States of America");
-	  			newPolicy.dropdown_veh_state().selectByVisibleText("CONNECTICUT");
-	  			newPolicy.inputPlates().sendKeys("5ZR1254");
-	  			newPolicy.inputVehicleID().sendKeys("ABstABriW222457");
-	  			newPolicy.radio_oneVeh().click();
+	  			newPolicy.getVehicleType().selectByVisibleText("Auto/SUV/Pick Up/Cargo & Passengers Van/Light Truck up to 2.5 ton of capacity");
+	  			newPolicy.getYear().selectByVisibleText("2011");
+	  			newPolicy.getMake().selectByVisibleText("CHRYSLER");
+	  			newPolicy.getModel().selectByVisibleText("300");
+	  			newPolicy.getVehicleCountry().selectByVisibleText("United States of America");
+	  			newPolicy.getVehicleState().selectByVisibleText("CONNECTICUT");
+	  			newPolicy.getPlates().sendKeys("5ZR1254");
+	  			newPolicy.getVehicleID().sendKeys("ABstABriW222457");
+	  			newPolicy.getJustOneVehicle().click();
 	  			break;
 	  	case "2":
-		  		newPolicy.dropdown_type().selectByVisibleText("Auto/SUV/Pick Up/Cargo & Passengers Van/Light Truck up to 2.5 ton of capacity");
-	  			newPolicy.dropdown_year().selectByVisibleText("2011");
-	  			newPolicy.select_make().selectByVisibleText("CHRYSLER");
-	  			newPolicy.select_model().selectByVisibleText("300");
-	  			newPolicy.dropdown_veh_country().selectByVisibleText("United States of America");
-	  			newPolicy.dropdown_veh_state().selectByVisibleText("CONNECTICUT");
-	  			newPolicy.inputPlates().sendKeys("5ZR1254");
-	  			newPolicy.inputVehicleID().sendKeys("testSerie12345");
-	  			newPolicy.radio_secondVeh().click();
-	  			newPolicy.dropdown_type2().selectByVisibleText("Auto/SUV/Pick Up/Cargo & Passengers Van/Light Truck up to 2.5 ton of capacity");
-	  			newPolicy.dropdown_year2().selectByVisibleText("2011");
-	  			newPolicy.select_make2().selectByVisibleText("CHRYSLER");
-	  			newPolicy.select_model2().selectByVisibleText("300");
-	  			newPolicy.dropdown_veh_country2().selectByVisibleText("United States of America");
-	  			newPolicy.dropdown_veh_state2().selectByVisibleText("CONNECTICUT");
-	  			newPolicy.inputPlates2().sendKeys("5ZR1254");
-	  			newPolicy.inputVehicleID2().sendKeys("testSerie123456");
+		  		newPolicy.getVehicleType().selectByVisibleText("Auto/SUV/Pick Up/Cargo & Passengers Van/Light Truck up to 2.5 ton of capacity");
+	  			newPolicy.getYear().selectByVisibleText("2011");
+	  			newPolicy.getMake().selectByVisibleText("CHRYSLER");
+	  			newPolicy.getModel().selectByVisibleText("300");
+	  			newPolicy.getVehicleCountry().selectByVisibleText("United States of America");
+	  			newPolicy.getVehicleState().selectByVisibleText("CONNECTICUT");
+	  			newPolicy.getPlates().sendKeys("5ZR1254");
+	  			newPolicy.getVehicleID().sendKeys("TESTSERIEAUT003");
+	  			newPolicy.getSecondVehicle().click();
+	  			newPolicy.getTypeSecondVehicle().selectByVisibleText("Auto/SUV/Pick Up/Cargo & Passengers Van/Light Truck up to 2.5 ton of capacity");
+	  			newPolicy.getYearSecondVehicle().selectByVisibleText("2011");
+	  			newPolicy.getMakeSecondVehicle().selectByVisibleText("CHRYSLER");
+	  			newPolicy.getModelSecondVehicle().selectByVisibleText("300");
+	  			newPolicy.getCountrySecondVehicle().selectByVisibleText("United States of America");
+	  			newPolicy.getStateSecondVehicle().selectByVisibleText("CONNECTICUT");
+	  			newPolicy.getPlatesSecondVehicle().sendKeys("5ZR1254");
+	  			newPolicy.getIdSecondVehicle().sendKeys("TESTSERIEAUT004");
 	  			break;
 	  	case "3":
-		  		newPolicy.dropdown_type().selectByVisibleText("Auto/SUV/Pick Up/Cargo & Passengers Van/Light Truck up to 2.5 ton of capacity");
-	  			newPolicy.dropdown_year().selectByVisibleText("2011");
-	  			newPolicy.select_make().selectByVisibleText("CHRYSLER");
-	  			newPolicy.select_model().selectByVisibleText("300");
-	  			newPolicy.dropdown_veh_country().selectByVisibleText("United States of America");
-	  			newPolicy.dropdown_veh_state().selectByVisibleText("CONNECTICUT");
-	  			newPolicy.inputPlates().sendKeys("5ZR1254");
-	  			newPolicy.inputVehicleID().sendKeys("testSerie12345");
-	  			newPolicy.radio_oneVeh().click();
-	  			newPolicy.radio_secondVeh().click();
-	  			newPolicy.dropdown_type2().selectByVisibleText("Auto/SUV/Pick Up/Cargo & Passengers Van/Light Truck up to 2.5 ton of capacity");
-	  			newPolicy.dropdown_year2().selectByVisibleText("2011");
-	  			newPolicy.select_make2().selectByVisibleText("CHRYSLER");
-	  			newPolicy.select_model2().selectByVisibleText("300");
-	  			newPolicy.dropdown_veh_country2().selectByVisibleText("United States of America");
-	  			newPolicy.dropdown_veh_state2().selectByVisibleText("CONNECTICUT");
-	  			newPolicy.inputPlates2().sendKeys("5ZR1254");
-	  			newPolicy.inputVehicleID2().sendKeys("ABstABrie123457");
-	  			newPolicy.radio_thirdVeh().click();
-	  			newPolicy.dropdown_type3().selectByVisibleText("Auto/SUV/Pick Up/Cargo & Passengers Van/Light Truck up to 2.5 ton of capacity");
-	  			newPolicy.dropdown_year3().selectByVisibleText("2011");
-	  			newPolicy.select_make3().selectByVisibleText("CHRYSLER");
-	  			newPolicy.select_model3().selectByVisibleText("300");
-	  			newPolicy.dropdown_veh_country3().selectByVisibleText("United States of America");
-	  			newPolicy.dropdown_veh_state3().selectByVisibleText("CONNECTICUT");
-	  			newPolicy.inputPlates3().sendKeys("5ZR1254");
-	  			newPolicy.inputVehicleID3().sendKeys("ABstABrie124457");
+		  		newPolicy.getVehicleType().selectByVisibleText("Auto/SUV/Pick Up/Cargo & Passengers Van/Light Truck up to 2.5 ton of capacity");
+	  			newPolicy.getYear().selectByVisibleText("2011");
+	  			newPolicy.getMake().selectByVisibleText("CHRYSLER");
+	  			newPolicy.getModel().selectByVisibleText("300");
+	  			newPolicy.getVehicleCountry().selectByVisibleText("United States of America");
+	  			newPolicy.getVehicleState().selectByVisibleText("CONNECTICUT");
+	  			newPolicy.getPlates().sendKeys("5ZR1254");
+	  			newPolicy.getVehicleID().sendKeys("TESTSERIEAUT001");
+	  			newPolicy.getSecondVehicle().click();
+	  			newPolicy.getTypeSecondVehicle().selectByVisibleText("Auto/SUV/Pick Up/Cargo & Passengers Van/Light Truck up to 2.5 ton of capacity");
+	  			newPolicy.getYearSecondVehicle().selectByVisibleText("2011");
+	  			newPolicy.getMakeSecondVehicle().selectByVisibleText("CHRYSLER");
+	  			newPolicy.getModelSecondVehicle().selectByVisibleText("300");
+	  			newPolicy.getCountrySecondVehicle().selectByVisibleText("United States of America");
+	  			newPolicy.getStateSecondVehicle().selectByVisibleText("CONNECTICUT");
+	  			newPolicy.getPlatesSecondVehicle().sendKeys("5ZR1254");
+	  			newPolicy.getIdSecondVehicle().sendKeys("testSerie123456");
+	  			newPolicy.getThirdVehicle().click();
+	  			newPolicy.getTypeThirdVehicle().selectByVisibleText("Auto/SUV/Pick Up/Cargo & Passengers Van/Light Truck up to 2.5 ton of capacity");
+	  			newPolicy.getYearThirdVehicle().selectByVisibleText("2011");
+	  			newPolicy.getMakeThirdVehicle().selectByVisibleText("CHRYSLER");
+	  			newPolicy.getModelThirdVehicle().selectByVisibleText("300");
+	  			newPolicy.getCountryThirdVehicle().selectByVisibleText("United States of America");
+	  			newPolicy.getStateThirdVehicle().selectByVisibleText("CONNECTICUT");
+	  			newPolicy.getPlatesThirdVehicle().sendKeys("5ZR1254");
+	  			newPolicy.getIdThirdVehicle().sendKeys("ABstABrie124457");
 	  			break;		  			
 	  }
 	  
 	  //Payment
 	  wait(2000);
-	  newPolicy.inputPayment().click();
-	  newPolicy.dropdown_payment().selectByVisibleText("Agent's Credit Card");
+	  newPolicy.getPaymentTab().click();
+	  newPolicy.getPayment().selectByVisibleText("Agent's Credit Card");
 	  //Make the purchase
-	  newPolicy.purchase().click();
+	  newPolicy.getPurchase().click();
 	  //Confirm the purchase
 	  newPolicy.confirmation();
 	  wait(3000);
@@ -146,21 +146,44 @@ public class NewQualitasTAMulti extends Driver{
 	  String close = Keys.chord(Keys.ALT,Keys.F4);
 	  newPolicy.closePolicy().sendKeys(close);
 	  //Get the policy number issued
-	  String Text = newPolicy.policy().getText();
+	  String Text = newPolicy.getPolicy().getText();
 	  System.out.println(Text);
 	  String[] parts = Text.split(":");
 	  System.out.println("The policy was issued correctly with the number: "+parts[1]);
+	  String line = "The policy was issued correctly with the number: "+parts[1];
+	  LogQualitasTaMulti.write(line);
 	  wait(1500);
 	  login.Logout();
   }
   
-  	@AfterTest
-  	public static void closeDriver(){
-  
-  		System.out.println("@AfterTest closing driver");
-  		wait(3000);
-  		System.out.println("close");
-  		driver.quit();
-  	}
+  @AfterMethod
+  public void afterMethod(ITestResult result)
+  {
+	  System.out.println("@AfterTest closing driver");
+	  wait(3000);
+	  driver.quit();
+      try
+      {
+      if(result.getStatus() == ITestResult.SUCCESS)
+      {
+    	  LogQualitasTaMulti.write("The test passed");
+          System.out.println("passed **********");
+      }
+      else if(result.getStatus() == ITestResult.FAILURE)
+      {
+    	  LogQualitasTaMulti.write("The test failed");
+          System.out.println("Failed ***********");
+      }
+
+      else if(result.getStatus() == ITestResult.SKIP )
+      {
+          System.out.println("Skiped***********");
+      }
+      }
+      catch(Exception e)
+      {
+    	  e.printStackTrace(); 
+      }
+  }
 
 }

@@ -7,151 +7,178 @@ import org.openqa.selenium.support.ui.Select;
 
 public class QualitasTA extends utilities.Driver{
 	
-	WebElement product;
+	private String product;
+	private String territory;
+	private String value;
+	private String brokeerFee;
+	private String personalInformationTab;
+	private String name;
+	private String lastName;
+	private String address;
+	private String city;
+	private String country;
+	private String state;
+	private String zip;
+	private String phone;
+	private String email;
+	private String vehicleDescriptionTab;
+	private String vehicleId;
+	private String year;
+	private String make;
+	private String model;
+	private String vehicleCountry;
+	private String vehicleState;
+	private String plates;
+	private String paymentTab;
+	private String payment;
+	private String purchase;
+	private String policy;
 	
-	WebElement territory;
-	WebElement value;
-	WebElement brokeerFee;
-	WebElement personalInformationTab;
-	WebElement name;
-	WebElement lastName;
-	WebElement address;
-	WebElement city;
-	Select country;
-	Select state;
-	WebElement zip;
-	WebElement phone;
-	WebElement email;
-	WebElement vehicleDescriptionTab;
-	WebElement vehicleId;
-	Select year;
-	WebElement make;
-	WebElement model;
-	Select vehicleCountry;
-	Select vehicleState;
-	WebElement plates;
-	WebElement paymentTab;
-	Select payment;
-	WebElement purchase;
-	WebElement confirmation;
-	WebElement closePolicy;
-	WebElement policy;
+	public QualitasTA() {
+		product = "Qualitas TA";
+		territory = "rbl_territory_1";
+		value = "txt_cta";
+		brokeerFee = "txt_brokerFee";
+		personalInformationTab = ".//*[@id='__tbl_form']/tbody/tr[3]/td/table/tbody/tr/td/div[1]/ul/li[2]/a";
+		name = "txt_Nombre";
+		lastName = "txt_Apellidos";
+		address = "txt_Domicilio";
+		city = "txt_Ciudad";
+		country = "ddl_Pais";
+		state = "ddl_Estado";
+		zip = "txt_CP";
+		phone = "txt_Tel";
+		email = "txt_email";
+		vehicleDescriptionTab = "Vehicle Description";
+		vehicleId = "txt_VehSerie";
+		year = "ddl_VehAnio";
+		make = "txt_VehMarca";
+		model = "txt_VehModelo";
+		vehicleCountry = "ddl_VehCountry";
+		vehicleState = "ddl_VehState";
+		plates = "txt_VehPlacas";
+		paymentTab = "Payment";
+		payment = "ddl_cc_owner";
+		purchase = "btnOK";
+		policy = "Label_succesful";
+	}
 	
 	public WebElement getProduct() {
 		//Select the frame where the button is located
 		driver.switchTo().frame("menu_inbox"); 
-		product = driver.findElement(By.linkText("Qualitas TA"));
-		return product;
+		return driver.findElement(By.linkText(product));
 	}
+	
 	public WebElement getTerritory() {
-		territory = driver.findElement(By.id("rbl_territory_1"));
-		return territory;
+		return driver.findElement(By.id(territory));
 	}
+	
 	public WebElement getValue() {
-		value = driver.findElement(By.id("txt_cta"));
-		return value;
+		return driver.findElement(By.id(value));
 	}
+	
 	public WebElement getBrokeerFee() {
-		brokeerFee = driver.findElement(By.id("txt_brokerFee"));
-		return brokeerFee;
+		return driver.findElement(By.id(brokeerFee));
 	}
+	
 	public WebElement getPersonalInformationTab() {
-		personalInformationTab = driver.findElement(By.xpath(".//*[@id='__tbl_form']/tbody/tr[3]/td/table/tbody/tr/td/div[1]/ul/li[2]/a"));
-		return personalInformationTab;
+		return driver.findElement(By.xpath(personalInformationTab));
 	}
+	
 	public WebElement getName() {
-		name = driver.findElement(By.id("txt_Nombre"));
-		return name;
+		return driver.findElement(By.id(name));
 	}
+	
 	public WebElement getLastName() {
-		lastName = driver.findElement(By.id("txt_Apellidos"));
-		return lastName;
+		return driver.findElement(By.id(lastName));
 	}
+	
 	public WebElement getAddress() {
-		address = driver.findElement(By.id("txt_Domicilio"));
-		return address;
+		return driver.findElement(By.id(address));
 	}
+	
 	public WebElement getCity() {
-		city = driver.findElement(By.id("txt_Ciudad"));
-		return city;
+		return driver.findElement(By.id(city));
 	}
+	
 	public Select getCountry() {
-		country = new Select(driver.findElement(By.id("ddl_Pais")));
-		return country;
+		return new Select(driver.findElement(By.id(country)));
 	}
+	
 	public Select getState() {
-		state = new Select(driver.findElement(By.id("ddl_Estado")));
-		return state;
+		return new Select(driver.findElement(By.id(state)));
 	}
+	
 	public WebElement getZip() {
-		zip = driver.findElement(By.id("txt_CP"));
-		return zip;
+		return driver.findElement(By.id(zip));
 	}
+	
 	public WebElement getPhone() {
-		phone = driver.findElement(By.id("txt_Tel"));
-		return phone;
+		return driver.findElement(By.id(phone));
 	}
+	
 	public WebElement getEmail() {
-		email = driver.findElement(By.id("txt_email"));
-		return email;
+		return driver.findElement(By.id(email));
 	}
+	
 	//Vehicle description tab
 	public WebElement getVehicleDescriptionTab() {
-		vehicleDescriptionTab = driver.findElement(By.linkText("Vehicle Description"));
-		return vehicleDescriptionTab;
+		return driver.findElement(By.linkText(vehicleDescriptionTab));
 	}
+	
 	public WebElement getVehicleId() {
-		vehicleId = driver.findElement(By.id("txt_VehSerie"));
-		return vehicleId;
+		return driver.findElement(By.id(vehicleId));
 	}
+	
 	public Select getYear() {
-		year = new Select(driver.findElement(By.id("ddl_VehAnio")));
-		return year;
+		return new Select(driver.findElement(By.id(year)));
 	}
+	
 	public WebElement getMake() {
-		make = driver.findElement(By.id("txt_VehMarca"));
-		return make;
+		return driver.findElement(By.id(make));
 	}
+	
 	public WebElement getModel() {
-		model = driver.findElement(By.id("txt_VehModelo"));
-		return model;
+		return driver.findElement(By.id(model));
 	}
+	
 	public Select getVehicleCountry() {
-		vehicleCountry = new Select(driver.findElement(By.id("ddl_VehCountry")));
-		return vehicleCountry;
+		return new Select(driver.findElement(By.id(vehicleCountry)));
 	}
+	
 	public Select getVehicleState() {
-		vehicleState = new Select(driver.findElement(By.id("ddl_VehState")));
-		return vehicleState;
+		return new Select(driver.findElement(By.id(vehicleState)));
 	}
+	
 	public WebElement getPlates() {
-		plates = driver.findElement(By.id("txt_VehPlacas"));
-		return plates;
+		return driver.findElement(By.id(plates));
 	}
+	
 	//Payment tab
 	public WebElement getPaymentTab() {
-		paymentTab = driver.findElement(By.linkText("Payment"));
-		return paymentTab;
+		return driver.findElement(By.linkText(paymentTab));
 	}
+	
 	public Select getPayment() {
-		payment = new Select(driver.findElement(By.id("ddl_cc_owner")));
-		return payment;
+		return new Select(driver.findElement(By.id(payment)));
 	}
+	
 	public WebElement getPurchase() {
-		purchase = driver.findElement(By.id("btnOK"));
-		return purchase;
+		return driver.findElement(By.id(purchase));
 	}
+	
 	public void confirmation() {
 		wait(3000);
 		Alert alert = driver.switchTo().alert();
 		alert.accept();
 	}
+	
 	public WebElement getClosePolicy() {
-		closePolicy = driver.switchTo().activeElement();
-		return closePolicy;
+		return driver.switchTo().activeElement();
 	}
+	
 	public WebElement getPolicy() {
-		policy = driver.findElement(By.id("Label_succesful"));
-		return policy;
+		return driver.findElement(By.id(policy));
 	}
+	
 }

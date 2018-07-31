@@ -1,0 +1,2 @@
+2018/07/27 14:45:14 The policy was issued correctly with the number:  QTA-0000570
+2018/07/27 14:45:22 The test passed

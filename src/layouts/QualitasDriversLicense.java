@@ -6,167 +6,173 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class QualitasDriversLicense extends utilities.Driver{
-	WebElement product;
-	Select packages;
-	Select licenses;
-	WebElement personalInformationTab;
-	WebElement name;
-	WebElement lastName;
-	WebElement address;
-	WebElement city;
-	Select country;
-	Select state;
-	WebElement zip;
-	WebElement phone;
-	WebElement email;
-	WebElement licenseTab;
-	WebElement nameLicense1;
-	WebElement addressLicense1;
-	WebElement numberLicense1;
-	WebElement nameLicense2;
-	WebElement addressLicense2;
-	WebElement numberLicense2;
-	WebElement nameLicense3;
-	WebElement addressLicense3;
-	WebElement numberLicense3;
-	WebElement paymentTab;
-	Select payment;
-	WebElement purchase;
-	WebElement closePolicy;
-	WebElement policy;
+	private String product;
+	private String packages;
+	private String licenses;
+	private String personalInformationTab;
+	private String name;
+	private String lastName;
+	private String address;
+	private String city;
+	private String country;
+	private String state;
+	private String zip;
+	private String phone;
+	private String email;
+	private String licenseTab;
+	private String nameLicense1;
+	private String addressLicense1;
+	private String numberLicense1;
+	private String nameLicense2;
+	private String addressLicense2;
+	private String numberLicense2;
+	private String nameLicense3;
+	private String addressLicense3;
+	private String numberLicense3;
+	private String paymentTab;
+	private String payment;
+	private String purchase;
+	private String policy;
+	
+	public QualitasDriversLicense() {
+		
+		product = "Qualitas Drivers License";
+		packages = "ddl_package";
+		licenses = "ddl_noDrvLic";
+		personalInformationTab = ".//*[@id='Form1']/table/tbody/tr[3]/td/table/tbody/tr/td/div[1]/ul/li[2]/a";
+		name = "txt_Nombre";
+		lastName = "txt_Apellidos";
+		city = "txt_Ciudad";
+		address = "txt_Domicilio";
+		country = "ddl_Pais";
+		state = "ddl_Estado";
+		zip = "txt_CP";
+		phone = "txt_Tel";
+		email = "txt_email";
+		licenseTab = "Driver License";
+		nameLicense1 = "txt_adddrv1nm";
+		addressLicense1 = "txt_adddrv1Address";
+		numberLicense1 = "txt_adddrv1dl";
+		nameLicense2 = "txt_adddrv2nm";
+		addressLicense2 = "txt_adddrv2Address";
+		numberLicense2 = "txt_adddrv2dl";
+		nameLicense3 = "txt_adddrv3nm";
+		addressLicense3 = "txt_adddrv3Address";
+		numberLicense3 = "txt_adddrv3dl";
+		paymentTab = "Payment";
+		payment = "ddl_cc_owner";
+		purchase = "btnOK";
+		policy = "Label_succesful";
+	}
 	
 	
 	public WebElement getProduct() {
 		//Select the frame where the button is located
 		driver.switchTo().frame("menu_inbox");
-		product = driver.findElement(By.linkText("Qualitas Drivers License"));
-		return product;
+		return driver.findElement(By.linkText(product));
 	}
 
 	public Select getPackages() {
-		packages =  new Select (driver.findElement(By.id("ddl_package")));
-		return packages;
+		return new Select (driver.findElement(By.id(packages)));
 	}
 
 	public Select getLicenses() {
-		licenses = new Select (driver.findElement(By.id("ddl_noDrvLic")));
-		return licenses;
+		return (new Select (driver.findElement(By.id(licenses))));
 	}
 	//Personal information tab
 	public WebElement getPersonalInformationTab() {
-		personalInformationTab = driver.findElement(By.xpath(".//*[@id='Form1']/table/tbody/tr[3]/td/table/tbody/tr/td/div[1]/ul/li[2]/a"));
-		return personalInformationTab;
+		return driver.findElement(By.xpath(personalInformationTab));
 	}
 
 	public WebElement getName() {
-		name = driver.findElement(By.id("txt_Nombre"));
-		return name;
+		return driver.findElement(By.id(name));
 	}
+	
 	public WebElement getLastName() {
-		lastName = driver.findElement(By.id("txt_Apellidos"));
-		return lastName;
+		return driver.findElement(By.id(lastName));
 	}
 	
 	public WebElement getAddress() {
-		address = driver.findElement(By.id("txt_Domicilio"));
-		return address;
+		return driver.findElement(By.id(address));
 	}
 
 	public WebElement getCity() {
-		city = driver.findElement(By.id("txt_Ciudad"));
-		return city;
+		return driver.findElement(By.id(city));
 	}
 
 	public Select getCountry() {
-		country = new Select(driver.findElement(By.id("ddl_Pais")));
-		return country;
+		return (new Select(driver.findElement(By.id(country))));
 	}
 
 	public Select getState() {
-		state = new Select(driver.findElement(By.id("ddl_Estado")));
-		return state;
+		return new Select(driver.findElement(By.id(state)));
 	}
 
 	public WebElement getZip() {
-		zip = driver.findElement(By.id("txt_CP"));
-		return zip;
+		return driver.findElement(By.id(zip));
 	}
 
 	public WebElement getPhone() {
-		phone = driver.findElement(By.id("txt_Tel"));
-		return phone;
+		return driver.findElement(By.id(phone));
 	}
 
 	public WebElement getEmail() {
-		email = driver.findElement(By.id("txt_email"));
-		return email;
+		return driver.findElement(By.id(email));
 	}
 	//Licenses tab
 	public WebElement getLicenseTab() {
 		wait(1000);
-		licenseTab = driver.findElement(By.linkText("Driver License"));
-		return licenseTab;
+		return driver.findElement(By.linkText(licenseTab));
 	}
 
 	public WebElement getNameLicense1() {
-		nameLicense1 = driver.findElement(By.id("txt_adddrv1nm"));
-		return nameLicense1;
+		return driver.findElement(By.id(nameLicense1));
 	}
 
 	public WebElement getAddressLicense1() {
-		addressLicense1 = driver.findElement(By.id("txt_adddrv1Address"));
-		return addressLicense1;
+		return driver.findElement(By.id(addressLicense1));
 	}
 
 	public WebElement getNumberLicense1() {
-		numberLicense1 = driver.findElement(By.id("txt_adddrv1dl"));
-		return numberLicense1;
+		return driver.findElement(By.id(numberLicense1));
 	}
 	//License 2
 	public WebElement getNameLicense2() {
-		nameLicense2 = driver.findElement(By.id("txt_adddrv2nm"));
-		return nameLicense2;
+		return driver.findElement(By.id(nameLicense2));
 	}
 
 	public WebElement getAddressLicense2() {
-		addressLicense2 = driver.findElement(By.id("txt_adddrv2Address"));
-		return addressLicense2;
+		return driver.findElement(By.id(addressLicense2));
 	}
 
 	public WebElement getNumberLicense2() {
-		numberLicense2 = driver.findElement(By.id("txt_adddrv2dl"));
-		return numberLicense2;
+		return driver.findElement(By.id(numberLicense2));
 	}
 
 	public WebElement getNameLicense3() {
-		nameLicense3 = driver.findElement(By.id("txt_adddrv3nm"));
-		return nameLicense3;
+		return driver.findElement(By.id(nameLicense3));
 	}
 	//License 3
 	public WebElement getAddressLicense3() {
-		addressLicense3 = driver.findElement(By.id("txt_adddrv3Address"));
-		return addressLicense3;
+		return driver.findElement(By.id(addressLicense3));
 	}
 
 	public WebElement getNumberLicense3() {
-		numberLicense3 = driver.findElement(By.id("txt_adddrv3dl"));
-		return numberLicense3;
+		return driver.findElement(By.id(numberLicense3));
 	}
 
 	public WebElement getPaymentTab() {
-		paymentTab = driver.findElement(By.linkText("Payment"));
-		return paymentTab;
+		return driver.findElement(By.linkText(paymentTab));
 	}
 
 	public Select getPayment() {
-		payment = new Select(driver.findElement(By.id("ddl_cc_owner")));
-		return payment;
+		return new Select(driver.findElement(By.id(payment)));
 	}
 	//Complete the purchase
 	public WebElement getPurchase() {
-		purchase = driver.findElement(By.id("btnOK"));
-		return purchase;
+		return driver.findElement(By.id(purchase));
 	}
+	
 	public void confirmation() {
 		wait(3000);
 		Alert alert = driver.switchTo().alert();
@@ -174,13 +180,11 @@ public class QualitasDriversLicense extends utilities.Driver{
 	}
 
 	public WebElement getClosePolicy() {
-		closePolicy = driver.switchTo().activeElement();
-		return closePolicy;
+		return driver.switchTo().activeElement();
 	}
 
 	public WebElement getPolicy() {
-		policy = driver.findElement(By.id("Label_succesful"));
-		return policy;
+		return driver.findElement(By.id(policy));
 	}
 
 }

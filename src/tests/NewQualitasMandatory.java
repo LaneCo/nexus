@@ -61,7 +61,7 @@ public class NewQualitasMandatory extends Driver{
 	  newPolicy.getVehicleCountry().selectByVisibleText("Canada");
 	  newPolicy.getVehicleState().selectByVisibleText("YUKON");
 	  newPolicy.getPlates().sendKeys("5Z1R289");
-	  newPolicy.getVehicleId().sendKeys("tesATYiW12ww121220");
+	  newPolicy.getVehicleId().sendKeys("testTYiW12ww121220");
 	  //Payment
 	  newPolicy.getPaymentTab().click();
 	  newPolicy.getPayment().selectByVisibleText("Cash");

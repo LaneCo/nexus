@@ -8,170 +8,147 @@ import org.openqa.selenium.support.ui.Select;
 
 
 public class QualitasRC extends utilities.Driver{
-	
-	WebElement product;
-	WebElement brokerFee;
-	Select days;
-	WebElement insuredDataTab;
-	WebElement insured;
-	WebElement address;
-	WebElement city;
-	Select country;
-	Select state;
-	WebElement zip;
-	WebElement phone;
-	WebElement rfc;
-	WebElement vehicleDescription;
-	Select year;
-	Select make;
-	Select model;
-	Select stateVehicle;
-	WebElement plates;
-	WebElement vehicleId;
-	WebElement paymentTab;
-	Select payment;
-	WebElement purchase;
-	WebElement closePolicy;
-	WebElement policy;
+		
+	private String product;
+	private String brokerFee;
+	private String days;
+	private String insuredDataTab;
+	private String insured;
+	private String address;
+	private String city;
+	private String country;
+	private String state;
+	private String zip;
+	private String phone;
+	private String rfc;
+	private String vehicleDescription;
+	private String year;
+	private String make;
+	private String model;
+	private String stateVehicle;
+	private String plates;
+	private String vehicleId;
+	private String paymentTab;
+	private String payment;
+	private String purchase;
+	private String policy;
 	
 	public QualitasRC(){
 		
-		/*driver.switchTo().frame("menu_inbox");
-		product = driver.findElement(By.id("btn_link"));
-		brokerFee = driver.findElement(By.xpath(".//*[@id='tbl_imgLinks']/tbody/tr[1]/td/a"));
-		days = new Select(driver.findElement(By.id("ddl_days")));
-		insuredDataTab = driver.findElement(By.xpath(".//*[@id='Form1']/table/tbody/tr[2]/td/table/tbody/tr[4]/td/table/tbody/tr[1]/td/div[1]/ul/li[2]/a"));
-		insured = driver.findElement(By.id("txt_Nombre"));
-		address = driver.findElement(By.id("txt_Domicilio"));
-		city = driver.findElement(By.id("txt_Ciudad"));
-		country = new Select(driver.findElement(By.id("ddl_Pais")));
-		state = new Select(driver.findElement(By.id("ddl_Estado")));
-		zip = driver.findElement(By.id("txt_CP"));
-		phone = driver.findElement(By.id("txt_Tel"));
-		rfc = driver.findElement(By.id("txt_rfc"));
-		vehicleDescription = driver.findElement(By.linkText("Vehicle Description"));
-		year = new Select(driver.findElement(By.id("ddl_VehAnio")));
-		make = new Select(driver.findElement(By.id("ddl_VehMarca")));
-		model = new Select(driver.findElement(By.id("ddl_VehModelo")));
-		state = new Select(driver.findElement(By.id("ddl_VehState")));
-		plates = driver.findElement(By.id("txt_VehPlacas"));
-		vehicleId = driver.findElement(By.id("txt_VehSerie"));
-		paymentTab = driver.findElement(By.linkText("Payment"));
-		payment = new Select(driver.findElement(By.id("ddl_cc_owner")));
-		purchase = driver.findElement(By.id("btnOK"));
-		closePolicy = driver.switchTo().activeElement();
-		policy = driver.findElement(By.id("Label_succesful"));*/
+		product = "btn_link";
+		brokerFee = "txt_brokerFee";
+		days = "ddl_days";
+		insuredDataTab = ".//*[@id='Form1']/table/tbody/tr[2]/td/table/tbody/tr[4]/td/table/tbody/tr[1]/td/div[1]/ul/li[2]/a";
+		insured = "txt_Nombre";
+		address = "txt_Domicilio";
+		city = "txt_Ciudad";
+		country = "ddl_Pais";
+		state = "ddl_Estado";
+		zip = "txt_CP";
+		phone = "txt_Tel";
+		rfc = "txt_rfc";
+		vehicleDescription = "Vehicle Description";
+		year = "ddl_VehAnio";
+		make = "ddl_VehMarca";
+		model = "ddl_VehModelo";
+		stateVehicle = "ddl_VehState";
+		plates = "txt_VehPlacas";
+		vehicleId = "txt_VehSerie";
+		paymentTab = "Payment";
+		payment = "ddl_cc_owner";
+		purchase = "btnOK";
+		policy = "Label_succesful";
 		
 	}
+	
 	public WebElement getProduct() {
 		driver.switchTo().frame("menu_inbox");
-		product = driver.findElement(By.id("btn_link"));
-		return product;
+		return driver.findElement(By.id(product));
 	}
 	
 	public WebElement getBrokerFee() {
-		brokerFee = driver.findElement(By.xpath(".//*[@id='txt_brokerFee']"));
-		return brokerFee;
+		return driver.findElement(By.id(brokerFee));
 	}
 	
 	public Select getDays() {
-		days = new Select(driver.findElement(By.id("ddl_days")));
-		return days;
+		return (new Select(driver.findElement(By.id(days))));
+		 
 	}
 	
 	public WebElement getInsuredDataTab() {
-		insuredDataTab = driver.findElement(By.xpath(".//*[@id='Form1']/table/tbody/tr[2]/td/table/tbody/tr[4]/td/table/tbody/tr[1]/td/div[1]/ul/li[2]/a"));
-		return insuredDataTab;
+		return driver.findElement(By.xpath(insuredDataTab));
 	}
 	
 	public WebElement getInsured() {
-		insured = driver.findElement(By.id("txt_Nombre"));
-		return insured;
+		return driver.findElement(By.id(insured));
 	}
 	
 	public WebElement getAddress() {
-		address = driver.findElement(By.id("txt_Domicilio"));
-		return address;
+		return driver.findElement(By.id(address));
 	}
 	
 	public WebElement getCity() {
-		city = driver.findElement(By.id("txt_Ciudad"));
-		return city;
+		return driver.findElement(By.id(city));
 	}
 	
 	public Select getCountry() {
-		country = new Select(driver.findElement(By.id("ddl_Pais")));
-		return country;
+		return new Select(driver.findElement(By.id(country)));
 	}
 	
 	public Select getState() {
-		state = new Select(driver.findElement(By.id("ddl_Estado")));
-		return state;
+		return new Select(driver.findElement(By.id(state)));
 	}
 	
 	public WebElement getZip() {
-		zip = driver.findElement(By.id("txt_CP"));
-		return zip;
+		return driver.findElement(By.id(zip));
 	}
 	
 	public WebElement getPhone() {
-		phone = driver.findElement(By.id("txt_Tel"));
-		return phone;
+		return driver.findElement(By.id(phone));
 	}
 	
 	public WebElement getRfc() {
-		rfc = driver.findElement(By.id("txt_rfc"));
-		return rfc;
+		return driver.findElement(By.id(rfc));
 	}
 	
 	public WebElement getVehicleDescription() {
-		vehicleDescription = driver.findElement(By.linkText("Vehicle Description"));
-		return vehicleDescription;
+		return driver.findElement(By.linkText(vehicleDescription));
 	}
 	
 	public Select getYear() {
-		year = new Select(driver.findElement(By.id("ddl_VehAnio")));
-		return year;
+		return new Select(driver.findElement(By.id(year)));
 	}
 	
 	public Select getMake() {
-		make = new Select(driver.findElement(By.id("ddl_VehMarca")));
-		return make;
+		return new Select(driver.findElement(By.id(make)));
 	}
 	
 	public Select getModel() {
-		model = new Select(driver.findElement(By.id("ddl_VehModelo")));
-		return model;
+		return new Select(driver.findElement(By.id(model)));
 	}
 	
 	public Select getStateVehicle() {
-		stateVehicle = new Select(driver.findElement(By.id("ddl_VehState")));
-		return stateVehicle;
+		return new Select(driver.findElement(By.id(stateVehicle)));
 	}
 	
 	public WebElement getPlates() {
-		plates = driver.findElement(By.id("txt_VehPlacas"));
-		return plates;
+		return driver.findElement(By.id(plates));
 	}
 	
 	public WebElement getVehicleId() {
-		vehicleId = driver.findElement(By.id("txt_VehSerie"));
-		return vehicleId;
+		return driver.findElement(By.id(vehicleId));
 	}
 	
 	public WebElement getPaymentTab() {
-		paymentTab = driver.findElement(By.linkText("Payment"));
-		return paymentTab;
+		return driver.findElement(By.linkText(paymentTab));
 	}
 	
 	public Select getPayment() {
-		payment = new Select(driver.findElement(By.id("ddl_cc_owner")));
-		return payment;
+		return new Select(driver.findElement(By.id(payment)));
 	}
 	
 	public WebElement getPurchase() {
-		purchase = driver.findElement(By.id("btnOK"));
-		return purchase;
+		return driver.findElement(By.id(purchase));
 	}
 	
 	public void confirmation() {
@@ -182,13 +159,11 @@ public class QualitasRC extends utilities.Driver{
 	}
 	
 	public WebElement getClosePolicy() {
-		closePolicy = driver.switchTo().activeElement();
-		return closePolicy;
+		return driver.switchTo().activeElement();
 	}
 	
 	public WebElement getPolicy() {
-		policy = driver.findElement(By.id("Label_succesful"));
-		return policy;
+		return driver.findElement(By.id(policy));
 	}
 	
 }

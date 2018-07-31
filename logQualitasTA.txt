@@ -1,3 +1,11 @@
 2018/06/12 16:28:09 The test failed
 2018/06/12 16:29:17 The policy was issued correctly with the number:  GRC-0044656
 2018/06/12 16:29:25 The test passed
+2018/07/06 10:49:22 The test failed
+2018/07/06 10:53:43 The policy was issued correctly with the number:  GRC-0044669
+2018/07/06 10:53:51 The test passed
+2018/07/10 15:38:04 The test failed
+2018/07/10 15:39:52 The test failed
+2018/07/10 15:40:59 The test failed
+2018/07/10 15:42:25 The policy was issued correctly with the number:  QTA-0044671
+2018/07/10 15:42:38 The test passed

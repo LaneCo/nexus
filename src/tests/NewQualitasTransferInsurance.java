@@ -2,68 +2,73 @@
 package tests;
 
 import org.testng.annotations.Test;
-
 import layouts.QualitasTransferInsurance;
 import utilities.Driver;
-
+import utilities.LogQualitasTransferInsurance;
 import org.testng.annotations.BeforeMethod;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;import org.openqa.selenium.Keys;
-import org.testng.annotations.AfterTest;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 
 public class NewQualitasTransferInsurance extends Driver{
 
 	utilities.Config cfg = new utilities.Config();
+	ITestResult result;
+	NewLogin login;
+	String user;
+	String pass;
 	
 	@BeforeMethod
 	public void OpenBrowser() {
 	   
-		String url = cfg.getProperty("url_nexus"); 
+		String url = cfg.getProperty("url_nexus");
+		user = cfg.getProperty("user_nexus");
+		pass = cfg.getProperty("pass_nexus");
 		driver.navigate().to(url);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		login = new NewLogin();
 
 	 }
 
 	@Test (priority = 2, description = "Issue Qualitas Transfer Insurance policy")
-  	public void createPolicy() {
-	
-		NewLogin login = new NewLogin();
-		String user = cfg.getProperty("user_nexus");
-		String pass = cfg.getProperty("pass_nexus");
+  	public void createPolicy() throws IOException {
+
 		login.login(user, pass);
 		  
 		QualitasTransferInsurance newPolicy = new QualitasTransferInsurance();
 		System.out.println("Issue Qualitas Transfer Insurance policy");
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		wait(2000);
-		newPolicy.selectProduct().click();
+		newPolicy.getProduct().click();
 		wait(1000);	
-		newPolicy.personalInformation().click();
+		newPolicy.getPersonalInformationTab().click();
 		//Personal Information
-		newPolicy.inputName().sendKeys("Mariana");
-		newPolicy.inputLastName().sendKeys("Atondo Lopez");
-		newPolicy.inputAddres().sendKeys("Calle girasoles 76 col. bustamante");
-		newPolicy.inputCity().sendKeys("Obregon");
-		newPolicy.dropdown_country().selectByVisibleText("Mexico");
-		newPolicy.dropdown_state().selectByVisibleText("SONORA");
-		newPolicy.inputZip().sendKeys("33000");
-		newPolicy.inputPhone().sendKeys("013361251444");
-		newPolicy.inputEmail().sendKeys("ramon@test.com");
-		newPolicy.vehicleDescription().click();
+		newPolicy.getName().sendKeys("Mariana");
+		newPolicy.getLastname().sendKeys("Atondo Lopez");
+		newPolicy.getAddress().sendKeys("Calle girasoles 76 col. bustamante");
+		newPolicy.getCity().sendKeys("Obregon");
+		newPolicy.getCountry().selectByVisibleText("Mexico");
+		newPolicy.getState().selectByVisibleText("SONORA");
+		newPolicy.getZip().sendKeys("33000");
+		newPolicy.getPhone().sendKeys("013361251444");
+		newPolicy.getEmail().sendKeys("ramon@test.com");
+		newPolicy.getVehicleDescriptionTab().click();
 		//Vehicle description
-		newPolicy.dropdown_year().selectByVisibleText("2004");
-		newPolicy.make().selectByVisibleText("FORD"); 
-		newPolicy.model().selectByVisibleText("FUSION");
-		newPolicy.dropdown_veh_country().selectByVisibleText("United States of America");
-		newPolicy.dropdown_veh_state().selectByVisibleText("ALASKA");
-		newPolicy.inputPlates().sendKeys("5ZR1233");
-		newPolicy.inputVehicleID().sendKeys("teABCD123WWTGYs");
+		newPolicy.getVehicleYear().selectByVisibleText("2004");
+		newPolicy.getMake().selectByVisibleText("FORD"); 
+		newPolicy.getModel().selectByVisibleText("FUSION");
+		newPolicy.getVehicleCountry().selectByVisibleText("United States of America");
+		newPolicy.getVehicleState().selectByVisibleText("ALASKA");
+		newPolicy.getPlates().sendKeys("5ZR1233");
+		newPolicy.getVehicleId().sendKeys("TESTSERIEAUT005");
 	  
 		//Payment
 		wait(2000);
-		newPolicy.inputPayment().click();
-		newPolicy.dropdown_payment().selectByVisibleText("Cash");
+		newPolicy.getPaymentTab().click();
+		newPolicy.getPayment().selectByVisibleText("Cash");
 		//Make the purchase
-		newPolicy.purchase().click();
+		newPolicy.getPurchase().click();
 		//Confirm the purchase
 		newPolicy.confirmation();
 		wait(3000);
@@ -72,21 +77,44 @@ public class NewQualitasTransferInsurance extends Driver{
 		String close = Keys.chord(Keys.ALT,Keys.F4);
 		newPolicy.closePolicy().sendKeys(close);
 		//Get the policy number issued
-		String Text = newPolicy.policy().getText();
+		String Text = newPolicy.getPolicy().getText();
 		System.out.println(Text);
 		String[] parts = Text.split(":");
 		System.out.println("The policy was issued correctly with the number: "+parts[1]);
+		String line = "The policy was issued correctly with the number: "+parts[1];
+		LogQualitasTransferInsurance.write(line);
 		wait(1500);
 		login.Logout();
   }
   
-  	@AfterTest
-  	public static void closeDriver(){
-  
-  		System.out.println("@AfterTest closing driver");
-  		wait(3000);
-  		System.out.println("close");
-  		driver.quit();
-  	}
+	@AfterMethod
+	  public void afterMethod(ITestResult result)
+	  {
+		  System.out.println("@AfterTest closing driver");
+		  wait(3000);
+		  driver.quit();
+	      try
+	      {
+	      if(result.getStatus() == ITestResult.SUCCESS)
+	      {
+	    	  LogQualitasTransferInsurance.write("The test passed");
+	          System.out.println("passed **********");
+	      }
+	      else if(result.getStatus() == ITestResult.FAILURE)
+	      {
+	    	  LogQualitasTransferInsurance.write("The test failed");
+	          System.out.println("Failed ***********");
+	      }
+
+	      else if(result.getStatus() == ITestResult.SKIP )
+	      {
+	          System.out.println("Skiped***********");
+	      }
+	      }
+	      catch(Exception e)
+	      {
+	    	  e.printStackTrace(); 
+	      }
+	  }
 
 }
